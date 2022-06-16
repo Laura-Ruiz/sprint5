@@ -17,8 +17,7 @@ let datos:any;
         console.log(response);
         
         if (response.status === 200) {
-            
-            
+                     
             datos = await response.json();
             console.log("datos", datos);
             let idApp= document.getElementById('app')
@@ -29,7 +28,41 @@ let datos:any;
     } catch (error) {
         console.log(error);
     }
+    console.log("hola");
+    showButton();
 });
 
 
-   
+function showButton(){
+    console.log("button");
+    (document.getElementById("botones") as HTMLElement).style.display = "block";
+}
+
+interface reportJokes {
+    joke: string; 
+    score: number; 
+    data: string
+};
+
+let arrayReportJokes: reportJokes[] = [];
+
+let punctuation = Array.from(document.getElementsByClassName("puntuacion") as HTMLCollectionOf<HTMLElement>);
+
+punctuation.map(btn => {
+    btn.addEventListener("click", function handleClick(){
+        
+        const report1 = {} as reportJokes;
+
+        let date:Date = new Date();
+        let text:string = date.toISOString();
+    
+        
+        report1.joke = datos.joke;
+        report1.score = parseInt(btn.getAttribute("data-value") as string);
+        report1.data = text;
+        
+        arrayReportJokes.push(report1);
+        console.log(arrayReportJokes);
+    })
+    
+});
