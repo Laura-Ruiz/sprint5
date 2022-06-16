@@ -29,32 +29,57 @@ const HTMLResponse = document.querySelector("#app");
 
 let datos:any;
 
+var handler = 0;
 (document.getElementById("button") as HTMLElement).addEventListener("click", async function () {
+    if(handler == 0){
+        myFirstHandler();
+        handler =1;
+    }else  {
+        mySecondHandler();
+        handler = 0
+    }
 
+    showButton();
+});
+
+async function  myFirstHandler(){
     try {
         const response = await fetch(`${API_URL}`, {
             headers: {
                 'Accept': "application/json"
-            }
+            } 
         })
         console.log(response);
-        
+        //Si la respuesta es correcta
         if (response.status === 200) {
-                     
             datos = await response.json();
             console.log("datos", datos);
             let idApp= document.getElementById('app')
             if(idApp) (idApp as HTMLElement).innerHTML = datos.joke; 
-            
         }
-
     } catch (error) {
         console.log(error);
     }
-    console.log("hola");
-    showButton();
-});
+};
 
+async function  mySecondHandler(){
+    try {
+        const response2 = await fetch(`https://api.chucknorris.io/jokes/random`, {
+            
+        })
+        console.log(response2);
+        //Si la respuesta es correcta
+        if (response2.status === 200) {
+            datos = await response2.json();
+            console.log("datos", datos);
+            let idApp= document.getElementById('app')
+            if(idApp) (idApp as HTMLElement).innerHTML = datos.value; 
+        }
+    } catch (error) {
+        console.log(error);
+        
+    }
+};
 
 function showButton(){
     console.log("button");

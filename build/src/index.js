@@ -30,7 +30,21 @@ getWeather();
 const API_URL = 'https://icanhazdadjoke.com/';
 const HTMLResponse = document.querySelector("#app");
 let datos;
+var handler = 0;
 document.getElementById("button").addEventListener("click", function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (handler == 0) {
+            myFirstHandler();
+            handler = 1;
+        }
+        else {
+            mySecondHandler();
+            handler = 0;
+        }
+        showButton();
+    });
+});
+function myFirstHandler() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(`${API_URL}`, {
@@ -39,6 +53,7 @@ document.getElementById("button").addEventListener("click", function () {
                 }
             });
             console.log(response);
+            //Si la respuesta es correcta
             if (response.status === 200) {
                 datos = yield response.json();
                 console.log("datos", datos);
@@ -50,10 +65,29 @@ document.getElementById("button").addEventListener("click", function () {
         catch (error) {
             console.log(error);
         }
-        console.log("hola");
-        showButton();
     });
-});
+}
+;
+function mySecondHandler() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response2 = yield fetch(`https://api.chucknorris.io/jokes/random`, {});
+            console.log(response2);
+            //Si la respuesta es correcta
+            if (response2.status === 200) {
+                datos = yield response2.json();
+                console.log("datos", datos);
+                let idApp = document.getElementById('app');
+                if (idApp)
+                    idApp.innerHTML = datos.value;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
+}
+;
 function showButton() {
     console.log("button");
     document.getElementById("botones").style.display = "block";
