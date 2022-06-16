@@ -29,3 +29,8 @@ body {
     padding: 20px;
     margin: auto;
 }
+
+#container-weather{
+    display: flex;
+    align-items: center;
+}

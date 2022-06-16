@@ -1,5 +1,28 @@
 import { domainToASCII } from "url";
 
+async function getWeather(){
+    
+    try {
+        const weather = await fetch(`https://fcc-weather-api.glitch.me/api/current?lat=41.390205&lon=2.154007`)
+        console.log("tiempo", weather);
+        
+        if (weather.status === 200) {
+           let datosWeather = await weather.json();
+            console.log("datos", datosWeather);
+    
+            let idWeather = document.getElementById('weather');
+            if(idWeather) (idWeather as HTMLElement).innerHTML = `<img src="${datosWeather.weather[0].icon}"><img>`;
+    
+        }
+    
+    } catch (error) {
+        console.log(error);
+    }
+    
+};
+    
+getWeather();
+
 const API_URL = 'https://icanhazdadjoke.com/'
 
 const HTMLResponse = document.querySelector("#app");

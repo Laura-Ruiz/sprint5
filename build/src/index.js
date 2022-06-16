@@ -7,6 +7,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+function getWeather() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const weather = yield fetch(`https://fcc-weather-api.glitch.me/api/current?lat=41.390205&lon=2.154007`);
+            console.log("tiempo", weather);
+            if (weather.status === 200) {
+                let datosWeather = yield weather.json();
+                console.log("datos", datosWeather);
+                let idWeather = document.getElementById('weather');
+                if (idWeather)
+                    idWeather.innerHTML = `<img src="${datosWeather.weather[0].icon}"><img>`;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
+}
+;
+getWeather();
 const API_URL = 'https://icanhazdadjoke.com/';
 const HTMLResponse = document.querySelector("#app");
 let datos;
