@@ -1,36 +1,91 @@
 
-body {
-    background-color: rgb(233, 220, 245)
-}
-#container{
+#container-weather{
+    align-self: start;
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: space-between;
-    
 }
+
+#temperature{
+    display: flex;
+    align-items: center;
+    border-left: 1px solid black;
+    padding-left: 0.5rem;
+    height: 2rem;
+    display: flex;
+    align-self: center;
+}
+
 #title {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
-
+    font-size: x-large;
 }
 
 #container_central{
+
+    position: absolute; 
+    color: white;
+    font-family: sans-serif;
     align-items: center;
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    border-radius: 5%;
-    width: 30%;
-    height:30%;
-    justify-content: space-evenly;
-    padding: 20px;
-    margin: auto;
+    margin-top: 18rem;
+    gap: 1rem;
+    width: 43%;
 }
 
-#container-weather{
+#appJokes{
+    width: 50%;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#container-svg-1{
+    display: flex;
+    align-items: end;
+}
+
+#container-svg-2{
+    display: flex;
+    justify-content: center;
+}
+
+
+#container-svg{
+    display: flex;
+    justify-content: center;   
+}
+
+.puntuacion{
+    background-color: transparent;
+    padding: 0;
+    border-radius: 1rem;
+    margin-left: 1rem;;
+}
+
+.puntuacion:first-child{
+    margin-left: 0;
+}
+
+#button{
+    position: relative;
+    background-color: transparent;
+    height: 2rem;
+    border-radius:  1rem;
+    border-color: rgb(36, 33, 33);
+    outline: none;
+    z-index: 1;
+    width: 7.5rem;
+}
+
+#sombra{
+    background-color: rgb(255, 224, 51);
+    height: 2rem;
+    border: none;
+    border-radius: 1rem;
+    width: 6.5rem;
+    position: absolute;
+    margin-left: -7.25rem;
+    margin-top: 0.25rem;
+    width: 7.5rem;
 }
