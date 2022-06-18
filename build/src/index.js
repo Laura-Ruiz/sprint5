@@ -28,6 +28,7 @@ document.getElementById("button").addEventListener("click", async function () {
         handler = 0;
     }
     apiUi.showButtons();
+    apiUi.modifySvg();
 });
 //API REPORT JOKES
 const apiReport = new ReportJokes();

@@ -34,6 +34,8 @@ let joke = "";
         handler = 0
     }
     apiUi.showButtons();
+
+    apiUi.modifySvg();
 });
 
 
@@ -50,5 +52,6 @@ punctuation.map(btn => {
         
     })
 });
+
 
 
